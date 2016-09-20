@@ -1,0 +1,349 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+	<!-- Templates -->
+
+	<EditBox name="QS_InputBoxTemplate" enableMouse="true" virtual="true">
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\Common\Common-Input-Border">
+					<Size>
+						<AbsDimension x="8" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="-5" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.0625" top="0" bottom="0.625"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\Common\Common-Input-Border">
+					<Size>
+						<AbsDimension x="8" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\Common\Common-Input-Border">
+					<Size>
+						<AbsDimension x="10" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+						<Anchor point="RIGHT" relativeTo="$parentRight" relativePoint="LEFT"/>
+					</Anchors>
+					<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnEscapePressed>
+				self:ClearFocus();
+			</OnEscapePressed>
+			<OnEditFocusLost>
+				self:HighlightText(0, 0);
+			</OnEditFocusLost>
+			<OnEditFocusGained>
+				self:HighlightText();
+			</OnEditFocusGained>
+		</Scripts>
+		<FontString inherits="ChatFontNormal"/>
+	</EditBox>
+    <CheckButton name="QuestTweetOptionsCheckButton" virtual="true" inherits="OptionsBaseCheckButtonTemplate">
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString name="$parentText" inherits="GameFontHighlight">
+                    <Anchors>
+                        <Anchor point="LEFT" relativePoint="RIGHT">
+                            <Offset>
+                                <AbsDimension x="0" y="1"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+    </CheckButton>
+
+	<!-- Option Frame -->
+
+    <Frame name="QuestTweetOptionsPanel" hidden="false" parent="InterfaceOptionsFramePanelContainer">
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentTitle" text="QUESTTWEET_TITLE" inherits="GameFontNormalLarge" justifyH="LEFT" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="16" y="-16"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSubText" text="QUESTTWEET_ABOUT" inherits="GameFontHighlightSmall" nonspacewrap="true" maxLines="3" justifyH="LEFT" justifyV="TOP">
+					<Size>
+						<AbsDimension y="32" x="0"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentTitle" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-8"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="-32" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentCategories" text="QUESTTWEET_CATAREA_LABEL" inherits="GameFontNormalLarge" justifyH="LEFT" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentQuestTweetLocal" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-16"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="16" y="-8"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<CheckButton name="$parentQuestTweetOn" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentSubText" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "on";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentQuestTweetChannel" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentQuestTweetOn" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "channel";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+			<EditBox name="$parentQuestTweetChannelId" letters="30" numeric="false" multiline="false" autoFocus="false" inherits="QS_InputBoxTemplate" >
+				<Size>
+					<AbsDimension x="150" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentQuestTweetChannel" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="128" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="ChannelIdLabel" inherits="GameFontHighlight" text="QUESTTWEET_CHANNELID_LABEL" >
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="3" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_EDITBOX;
+						self.field = "channelid";
+					</OnLoad>
+					<OnEnterPressed>
+						self:ClearFocus();
+					</OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<CheckButton name="$parentQuestTweetParty" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentQuestTweetChannel" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "party";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentQuestTweetGuild" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentQuestTweetParty" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="128" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "guild";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentQuestTweetLocal" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentQuestTweetParty" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "local";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentQuestTweetRaid" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentQuestTweetLocal" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="128" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "raid";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+
+			<!-- ============================================================== -->
+			<!-- ================ Categories Categories ======================= -->
+			<!-- ============================================================== -->
+
+			<CheckButton name="$parentQuestTweetAchievements" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentCategories" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "achievement";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentQuestTweetLevelUp" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentQuestTweetAchievements" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="128" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "levelup";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentQuestTweetQuestProgress" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentQuestTweetAchievements" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "questxp";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentQuestTweetDetails" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentQuestTweetQuestProgress" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="128" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "details";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentQuestTweetDiscovery" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentQuestTweetQuestProgress" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "discovery";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentQuestTweetCombatXP" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentQuestTweetDiscovery" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="128" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "killxp";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+		</Frames>
+    <Scripts>
+      <OnLoad>
+        QuestTweetOptions_OnLoad(self);
+      </OnLoad>
+    </Scripts>
+    </Frame>
+</Ui>
