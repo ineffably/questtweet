@@ -1,13 +1,20 @@
 ﻿-- ===========================================================================
--- = Quest Tweet.lua Version 1.2.0
+-- = Quest Tweet.lua Version 7.0.0
 -- ===========================================================================
--- = by Wizwonk
+-- = by Wizwonk, Gigantomancer
 -- =
 -- = Credits: The inspiration came from FastQuest Classic
--- =          Thanks goes to:
--- =          My Brother who through contunious updates helped me with 
--- =				features and bugs.
--- =          Gold Tracker developer : I derived my commenting scheme from you 
+-- = Thanks goes to:
+-- =  My Brother who through contunious updates helped me with 
+-- =  features and bugs.
+-- =  Gold Tracker developer : I derived my commenting scheme from you, well done.  
+-- =
+-- = P.S: 
+-- =  Hi, I am also Wizwonk, but, I lost my old curse account when I 
+-- =  let my domain lapse and my email expired. 
+-- =  This is a continuation of Quest Spam: 
+-- =  https://mods.curse.com/addons/wow/questspam
+-- =  When (if) curse respolves my ticket, I'll forward Quest Spam to Quest Tweet
 -- =
 -- ===========================================================================
 
@@ -20,13 +27,8 @@
 -- v1.1.0 Dec 27, 2011  UPDATE: Update to newest version of wow and prepping for re-release.
 -- v1.2.0 Feb 23, 2014  UPDATE: Update to wow version 5.4.
 -- v1.2.1 Feb 26, 2014  UPDATE: New Quests are now links; Streamlined text values
-
--- Rename to Quest Tweeter
--- Feature Requests
--- Rare Kills?
--- Profession Levels
--- Icons for stuff  {star}, {skull}, {cross}, {circle}, {moon}, {diamond}, {square}, {triangle}
--- Toys!
+-- v7.0.0 Sep 19, 2016  UPDATE: Renamed Quest Spam to Quest Tweet
+--                              Fixed updated breaking changes to ui_info_message parameters
 
 -- ========= Globals =========================================================
 QS_DEBUG = false;
