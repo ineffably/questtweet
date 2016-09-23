@@ -6,8 +6,6 @@
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 ## SavedVariables: QuestTweetLog,QuestTweetPref
-## X-Curse-Project-Name: Quest Tweet
-## X-Curse-Project-ID: quest-tweet
 QuestTweetLocText.lua
 QuestTweet.lua
 QuestTweetOptions.lua
