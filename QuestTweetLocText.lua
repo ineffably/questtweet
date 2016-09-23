@@ -19,14 +19,16 @@ QUESTTWEET_UI_INFO_MATCH = {	                            -- UI_INFO_MESSAGE
 -- ========== Quest Tweet Messaging Templates ==================================
 QUESTTWEET_QUESTTEXT = "(.*): %s*([-%d]+)%s*/%s*([-%d]+)%s*$";
 QUESTTWEET_QUESTPROGRESS = "Progress: ";
-QUESTTWEET_LEVELUPMESSAGE = "DING!! LEVEL %s";
-QUESTTWEET_KILLEXP_MESSAGE = "kills %1 for %2 exp";
-QUESTTWEET_ACHIEVEMENT_MESSAGE = "Achievement!! %s for %s pts for total of %s Achievements at %s pts";
+QUESTTWEET_LEVELUPMESSAGE = "{star}{star} DING!! LEVEL %s! {star}{star}";
+QUESTTWEET_KILLEXP_MESSAGE = "kills %1 for %2 exp {skull}";
+QUESTTWEET_KILLEXP_MATCH = "^(.*) dies, you gain (.*) experience(.*)";
+QUESTTWEET_ACHIEVEMENT_MESSAGE = "{square}{square} Achievement!! %s for %s pts for total of %s Achievements at %s pts {square}{square}";
 QUESTTWEET_LATESTACHIEVEMENT = "Latest Achievement: ";
-QUESTTWEET_EXP_MESSAGE_1 = "Gained %s XP: ";
+QUESTTWEET_EXP_MESSAGE_1 = "{triangle} Gained %s XP: ";
 QUESTTWEET_EXP_MESSAGE_2 = "%s%s%% of level %s!";
 QUESTTWEET_EXP_GAINED = "^Experience gained: (.*)\.$"
-QUESTTWEET_KILLEXP_MATCH = "^(.*) dies, you gain (.*) experience(.*)";
+QUESTTWEET_SKILL_MATCH = "^Your skill in (.*) has increased to (.*)"
+QUESTTWEET_SKILL_TEXT = "{cross} Skill level of %1 is %2"
 
 -- ========== Quest Tweet About ================================================
 QUESTTWEET_ABOUT = "Share your Achievements and Quest progress with your friends. Here you can customize what to tweet and who to tweet.";
@@ -62,6 +64,8 @@ QUESTTWEET_DISCOVERY_LABEL = "Discovery";
 QUESTTWEET_DISCOVERY_TOOLTIP = "This will tweet a discovery notification every time you discover a new area.";
 QUESTTWEET_COMBATXP_LABEL = "Combat Exp";
 QUESTTWEET_COMBATXP_TOOLTIP = "The Uber Tweeters! This will tweet your every kill that you make exp on. A true way to share the experience or annoy your friends!";
+QUESTTWEET_PROFESSIONS_LABEL = "Professions";
+QUESTTWEET_PROFESSIONS_TOOLTIP = "This will tweet a profession skill increase notifications.";
 
 -- ========== Quest Achievement Options =======================================
 QUESTTWEET_ACHIEVESETTINGS_LABEL = "Achievement Settings";

@@ -29,6 +29,7 @@ QuestTweetOptionLabels =
 	["QuestTweetCombatXP"] = {toggle = "killxp", text = QUESTTWEET_COMBATXP_LABEL, tooltip = QUESTTWEET_COMBATXP_TOOLTIP },
 	["QuestTweetLevelUp"] = {toggle = "levelup", text = QUESTTWEET_LEVELUP_LABEL, tooltip = QUESTTWEET_LEVELUP_TOOLTIP },
 	["QuestTweetQuestProgress"] = {toggle = "questxp", text = QUESTTWEET_QUESTPROGRESS_LABEL, tooltip = QUESTTWEET_QUESTPROGRESS_TOOLTIP },
+	["QuestTweetProfessions"] = {toggle = "professions", text = QUESTTWEET_PROFESSIONS_LABEL, tooltip = QUESTTWEET_PROFESSIONS_TOOLTIP },
 }
 
 -- ========= Functions =======================================================

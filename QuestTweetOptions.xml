@@ -339,6 +339,21 @@
 					</OnLoad>
 				</Scripts>
 			</CheckButton>
+			<CheckButton name="$parentQuestTweetProfessions" inherits="QuestTweetOptionsCheckButton">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentQuestTweetDiscovery" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.toggle = "professions";
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
 		</Frames>
     <Scripts>
       <OnLoad>

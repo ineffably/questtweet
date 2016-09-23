@@ -73,6 +73,8 @@ QuestTweetBasePref =
 	["levelup"]		= true,
 	["killxp"]		= false,    -- TODO: hanlde rested : Ashenvale Bear dies, you gain 270 experience (+135 exp Rested Bonus)
 	["debug"]		= false,
+  ["professions"] = true, 
+  ["debugchannel"] = "qtdebug"
 };
 
 if ( QS_DEBUG ) then
@@ -91,7 +93,7 @@ end
 function QSTrace(msg)
 	if (QuestTweetPref["debug"]) then
 		QuestTweetLog[#QuestTweetLog+1] = msg;
-		DEFAULT_CHAT_FRAME:AddMessage("|cffffaa11[QS]:" .. msg);
+    DEFAULT_CHAT_FRAME:AddMessage("|cffffaa11[QS]:" .. msg);
 	end
 end
 
@@ -144,9 +146,17 @@ function QuestTweet:SpamMessage(msg,event)
 	QuestTweetLastMsg = msg; -- This is mainly for test purposes
 	local SendChat = SendChatMessage;
 	if (QS_IsTestOn) then
-		SendChat = function(chatmsg)
-			DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00" .. msg);
-		end
+    if (QuestTweetPref["debugchannel"]) then
+      local id, name = GetChannelName(QuestTweetPref["debugchannel"]);
+      if (id > 0 and name ~= nil) then
+        msg = msg or ""
+        SendChat(msg, "CHANNEL", nil, id);
+      end
+    else 
+      SendChat = function(chatmsg)
+        DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00" .. msg);
+      end
+    end
 	end
 
 	if (msg and QuestTweetPref["on"]) then
@@ -163,7 +173,7 @@ function QuestTweet:SpamMessage(msg,event)
 			SendChat(msg, "GUILD");
 		end
 		if (QuestTweetPref["channel"]) then 
-			id, name = GetChannelName(QuestTweetPref["channelid"]);
+			local id, name = GetChannelName(QuestTweetPref["channelid"]);
 			if (id > 0 and name ~= nil) then
 			  SendChat(msg, "CHANNEL", nil, id);
 			end
@@ -211,6 +221,8 @@ function QuestTweet:ParseMessage(msg)
 
 				if (killxp) then
 					-- Lets change the message so it's shorter
+          -- QUESTTWEET_KILLEXP_MESSAGE = "kills %1 for %2 exp";
+          -- QUESTTWEET_KILLEXP_MATCH = "^(.*) dies, you gain (.*) experience(.*)";
 					msg = string.gsub(msg,QUESTTWEET_KILLEXP_MATCH,QUESTTWEET_KILLEXP_MESSAGE);
 				end
 				
@@ -268,8 +280,13 @@ function QuestTweet:OnEvent(event, message, arg2, arg3)
 				QuestTweet:ParseMessage(infoMessage);
 			end	
 		end
-		
-		if(event == "QUEST_ACCEPTED") then
+
+    if (event == "CHAT_MSG_SKILL" and QuestTweetPref["professions"]) then
+      local profmsg = gsub(message, QUESTTWEET_SKILL_MATCH, QUESTTWEET_SKILL_TEXT)
+      QuestTweet:SpamMessage(profmsg);
+    end
+
+		if (event == "QUEST_ACCEPTED") then
 			-- QUEST_WATCH_UPDATE
 			local questLink = GetQuestLink(message);
 			QuestTweet:SpamMessage(string.format("New Quest: %s", questLink));
@@ -378,6 +395,7 @@ function QuestTweet:Initialize()
 	self:RegisterEvent("QUEST_FINISHED");
 	self:RegisterEvent("QUEST_ITEM_UPDATE");
 	self:RegisterEvent("QUEST_PROGRESS");
+	self:RegisterEvent("CHAT_MSG_SKILL");
 	-- self:RegisterEvent("QUEST_WATCH_UPDATE");
 	-- self:RegisterEvent("QUEST_GREETING");
 	-- self:RegisterEvent("QUEST_LOG_UPDATE");
@@ -497,6 +515,10 @@ function QuestTweetRunTests(val)
 	QSTrace("TEST : Discovery");
 	QuestTweet:OnEvent("UI_INFO_MESSAGE", 368, "Discovered: Echo Ridge Mine");
 
+	QSTrace("TEST : Leveling");
+	QuestTweet:OnEvent("PLAYER_LEVEL_UP", "20");
+	QuestTweet:OnEvent("PLAYER_LEVEL_UP", "50");
+
 	QSTrace("TEST : QuestProgress");
 	QuestTweet:OnEvent("UI_INFO_MESSAGE", 286, "Kobold Workers slain: 1/10");
 	QuestTweet:OnEvent("UI_INFO_MESSAGE", 286, "Kobold Workers slain: 2/10");
@@ -508,7 +530,10 @@ function QuestTweetRunTests(val)
 
 	QSTrace("TEST : Achievement");
 	QuestTweet:OnEvent("ACHIEVEMENT_EARNED", "1017");
-	
+
+	QSTrace("TEST : Professions");
+	QuestTweet:OnEvent("CHAT_MSG_SKILL", "Your skill in Herbalism has increased to 62");
+  
 	QSTrace("End Tests");
 	QS_IsTestOn = false;
 end

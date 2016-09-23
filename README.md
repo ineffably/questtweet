@@ -60,7 +60,6 @@ I use this to ensure that things are working right
 ```
 
 ### Feature Requests I've recieved
-- Profession Levels
 - Icons for stuff  {star}, {skull}, {cross}, {circle}, {moon}, {diamond}, {square}, {triangle}
 - Toys and Mount acquisition
 - Special frame for feeds
