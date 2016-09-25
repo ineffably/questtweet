@@ -22,13 +22,13 @@ QUESTTWEET_QUESTPROGRESS = "Progress: ";
 QUESTTWEET_LEVELUPMESSAGE = "{star}{star} DING!! LEVEL %s! {star}{star}";
 QUESTTWEET_KILLEXP_MESSAGE = "kills %1 for %2 exp {skull}";
 QUESTTWEET_KILLEXP_MATCH = "^(.*) dies, you gain (.*) experience(.*)";
-QUESTTWEET_ACHIEVEMENT_MESSAGE = "{square}{square} Achievement!! %s for %s pts for total of %s Achievements at %s pts {square}{square}";
+QUESTTWEET_ACHIEVEMENT_MESSAGE = "{triangle} Achievement!! {triangle} %s for %s pts for total of %s Achievements at %s pts";
 QUESTTWEET_LATESTACHIEVEMENT = "Latest Achievement: ";
 QUESTTWEET_EXP_MESSAGE_1 = "{triangle} Gained %s XP: ";
 QUESTTWEET_EXP_MESSAGE_2 = "%s%s%% of level %s!";
 QUESTTWEET_EXP_GAINED = "^Experience gained: (.*)\.$"
 QUESTTWEET_SKILL_MATCH = "^Your skill in (.*) has increased to (.*)"
-QUESTTWEET_SKILL_TEXT = "{cross} Skill level of %1 is %2"
+QUESTTWEET_SKILL_TEXT = "{square} Skill {square} level of %1 is %2"
 
 -- ========== Quest Tweet About ================================================
 QUESTTWEET_ABOUT = "Share your Achievements and Quest progress with your friends. Here you can customize what to tweet and who to tweet.";

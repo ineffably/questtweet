@@ -1,14 +1,14 @@
 ## Interface: 70000
 ## Title: Quest Tweet
 ## Author: Wizwonk, Gigantomancer
-## Version: 7.0.1
+## Version: 7.0.2
 ## Notes: Social questing when continents and levels apart. Notifies your party, raid or chat channel members of your adventuring progress.
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 ## SavedVariables: QuestTweetLog,QuestTweetPref
-QuestTweetLocText.lua
-QuestTweet.lua
-QuestTweetOptions.lua
-QuestTweetOptions.xml
+quest-tweet-loctext.lua
+quest-tweet.lua
+quest-tweet-options.lua
+quest-tweet-options.xml
 
 

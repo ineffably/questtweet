@@ -1,5 +1,5 @@
 ﻿-- ===========================================================================
--- = Quest Tweet.lua Version 7.0.0
+-- = Quest Tweet.lua Version 7.0.2
 -- ===========================================================================
 -- = by Wizwonk, Gigantomancer
 -- =
@@ -37,7 +37,7 @@ QuestTweetPref = {};
 SLASH_QuestTweet1 = "/questtweet";
 SLASH_QuestTweet2 = "/qtweet";
 QuestTweetLastMsg = "";
-local QSVer = GetAddOnMetadata("QuestTweet", "Version");
+local QSVer = GetAddOnMetadata("quest-tweet", "Version");
 
 -- ========= Flags ===========================================================
 QS_VariablesLoaded  = false;
