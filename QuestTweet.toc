@@ -6,9 +6,7 @@
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 ## SavedVariables: QuestTweetLog,QuestTweetPref
-quest-tweet-loctext.lua
-quest-tweet.lua
-quest-tweet-options.lua
-quest-tweet-options.xml
-
-
+QuestTweetLocText.lua
+QuestTweet.lua
+QuestTweetOptions.lua
+QuestTweetOptions.xml

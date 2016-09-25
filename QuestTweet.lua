@@ -37,7 +37,7 @@ QuestTweetPref = {};
 SLASH_QuestTweet1 = "/questtweet";
 SLASH_QuestTweet2 = "/qtweet";
 QuestTweetLastMsg = "";
-local QSVer = GetAddOnMetadata("quest-tweet", "Version");
+local QSVer = GetAddOnMetadata("QuestTweet", "Version");
 
 -- ========= Flags ===========================================================
 QS_VariablesLoaded  = false;
