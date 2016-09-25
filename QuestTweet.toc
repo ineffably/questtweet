@@ -1,7 +1,7 @@
 ## Interface: 70000
 ## Title: Quest Tweet
 ## Author: Wizwonk, Gigantomancer
-## Version: 7.0.2
+## Version: 7.0.3
 ## Notes: Social questing when continents and levels apart. Notifies your party, raid or chat channel members of your adventuring progress.
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
